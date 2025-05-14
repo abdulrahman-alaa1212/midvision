@@ -1,3 +1,5 @@
+"use client";
+
 import { MetricCard } from "@/components/dashboard/metric-card";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, Percent, TrendingUp, CalendarClock, AlertTriangle } from "lucide-react";
