@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input"
 import { UserMenu } from "@/components/layout/user-menu"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { Search } from "lucide-react"
+import { ThemeToggleButton } from "./theme-toggle-button";
 
 export function Header() {
   return (
@@ -13,7 +14,7 @@ export function Header() {
           <Logo />
         </div>
         
-        <div className="flex flex-1 items-center justify-end space-x-4">
+        <div className="flex flex-1 items-center justify-end space-x-2 md:space-x-4">
           <form className="hidden md:flex flex-1 ml-auto max-w-sm">
             <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -24,6 +25,7 @@ export function Header() {
               />
             </div>
           </form>
+          <ThemeToggleButton />
           <UserMenu />
         </div>
       </div>

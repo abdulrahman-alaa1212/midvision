@@ -50,40 +50,40 @@ body {
   }
 
   .dark {
-    --background: 220 15% 10%;
-    --foreground: 0 0% 98%;
-    --card: 220 15% 12%;
-    --card-foreground: 0 0% 98%;
-    --popover: 220 15% 10%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 220 15% 20%;
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 220 15% 18%;
-    --muted-foreground: 220 10% 65%;
-    --accent: 180 70% 50%; /* Teal */
-    --accent-foreground: 0 0% 10%;
-    --destructive: 0 62.8% 30.6%;
+    --background: 0 0% 22%; /* #383838 like */
+    --foreground: 0 0% 95%;
+    --card: 0 0% 25%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 20%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 0% 95%; /* Light buttons on dark bg */
+    --primary-foreground: 0 0% 15%; /* Dark text on light buttons */
+    --secondary: 174 36% 41%; /* #449088 for secondary buttons */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 28%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 174 36% 41%; /* #449088 */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 15% 22%;
-    --input: 220 15% 22%;
-    --ring: 180 70% 55%; /* Teal */
+    --border: 0 0% 35%;
+    --input: 0 0% 30%;
+    --ring: 174 36% 50%; /* Lighter accent for ring */
 
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
+    --chart-1: 174 40% 55%;
+    --chart-2: 190 40% 55%;
     --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-4: 220 40% 60%;
+    --chart-5: 174 30% 35%;
 
-    --sidebar-background: 220 15% 12%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 180 70% 50%;
-    --sidebar-primary-foreground: 0 0% 10%;
-    --sidebar-accent: 220 15% 18%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 220 15% 20%;
-    --sidebar-ring: 180 70% 55%;
+    --sidebar-background: 0 0% 18%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 174 36% 41%; /* Accent for active sidebar items */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 28%; /* Hover for sidebar items */
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 25%;
+    --sidebar-ring: 174 36% 50%;
     
     --metric-positive: 145 58% 55%; 
     --metric-neutral: 43 74% 66%;
