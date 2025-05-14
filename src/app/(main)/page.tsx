@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, BarChart3, FileText, Search, Zap } from "lucide-react";
@@ -13,17 +14,16 @@ export default function HomePage() {
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-foreground to-accent">
-                  Unlock the Value of AR/MR
+                  AR/MR ROI Feasibility Deep Searcher for Healthcare
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  Our AR/MR ROI Deep Dive platform helps you analyze, visualize, and understand the
-                  financial impact of augmented and mixed reality solutions for your business.
+                  Empower hospital decision-makers to assess the financial and time-saving benefits of integrating Augmented and Mixed Reality technologies. Our easy-to-use web application helps you quickly evaluate potential gains, leveraging AI to deliver comprehensive, customized feasibility analyses—even if you don’t have highly precise numerical data.
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
                   <Link href="/roi-study">
-                    Start ROI Study <ArrowRight className="ml-2 h-5 w-5" />
+                    Start Feasibility Study <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
@@ -37,8 +37,8 @@ export default function HomePage() {
               src="https://placehold.co/600x400.png"
               width="600"
               height="400"
-              alt="AR/MR technology in action"
-              data-ai-hint="augmented reality business"
+              alt="AR/MR technology in a healthcare setting"
+              data-ai-hint="healthcare technology"
               className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square shadow-lg"
             />
           </div>
@@ -52,29 +52,29 @@ export default function HomePage() {
               Key Features
             </div>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-              Powerful Tools at Your Fingertips
+              Powerful Tools for Healthcare Innovation
             </h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Leverage our comprehensive suite of features to make informed decisions about your AR/MR investments.
+              Leverage our comprehensive suite of features to make informed decisions about your AR/MR investments in healthcare.
             </p>
           </div>
           <div className="mx-auto grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:gap-12">
             <FeatureCard
               icon={<FileText className="h-10 w-10 text-accent" />}
-              title="Input Wizard"
-              description="Guided multi-step wizard for easy scenario and data entry to calculate ROI."
+              title="Interactive Data Input"
+              description="Guided multi-step wizard for easy scenario and data entry, enabling non-technical hospital managers to quickly input information for ROI calculation."
               href="/roi-study"
             />
             <FeatureCard
               icon={<BarChart3 className="h-10 w-10 text-accent" />}
-              title="Interactive Dashboard"
-              description="Visualize key ROI metrics like ROI %, annual savings, and payback period."
+              title="Visualize Potential Gains"
+              description="Visualize key ROI metrics, financial gains, and time savings, helping you understand the potential impact of AR/MR in your healthcare setting."
               href="/dashboard"
             />
             <FeatureCard
               icon={<Search className="h-10 w-10 text-accent" />}
-              title="AI Search Agent"
-              description="Find relevant AR/MR ROI documentation with AI-powered search and transparent reasoning."
+              title="AI-Powered Analysis"
+              description="Leverage AI for a comprehensive feasibility analysis. Find relevant documentation and insights on AR/MR in healthcare to support your assessment."
               href="/ai-search"
             />
           </div>

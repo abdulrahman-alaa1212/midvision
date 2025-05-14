@@ -1,3 +1,4 @@
+
 import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
 import './globals.css';
@@ -14,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'AR/MR ROI Deep Dive',
-  description: 'Analyze and understand the ROI of AR/MR projects.',
+  title: 'AR/MR ROI Feasibility Deep Searcher for Healthcare',
+  description: 'Assess financial and time-saving benefits of AR/MR in healthcare with AI-driven feasibility analysis.',
 };
 
 export default function RootLayout({
