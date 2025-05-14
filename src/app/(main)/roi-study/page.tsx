@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -10,13 +11,25 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Stepper } from "@/components/common/stepper";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, ArrowRight, CheckCircle, Loader2 } from "lucide-react";
+import Link from "next/link";
+
+const useCaseEnum = z.enum([
+  "Training & Onboarding", 
+  "Maintenance & Repair", 
+  "Logistics & Warehousing", 
+  "Design & Prototyping", 
+  "Sales & Marketing", 
+  "Other"
+]);
 
 const projectInfoSchema = z.object({
   projectName: z.string().min(3, "Project name must be at least 3 characters."),
   projectDescription: z.string().optional(),
+  useCase: useCaseEnum.describe("The primary use case for the AR/MR project."),
 });
 
 const investmentCostsSchema = z.object({
@@ -66,6 +79,8 @@ export default function RoiStudyPage() {
     defaultValues: {
       step: 0,
       projectName: "",
+      projectDescription: "",
+      useCase: "Training & Onboarding",
       hardwareCost: 0,
       softwareCost: 0,
       trainingCost: 0,
@@ -84,7 +99,7 @@ export default function RoiStudyPage() {
     const isStepValid = await trigger();
     if (isStepValid && currentStep < stepsConfig.length - 1) {
       setCurrentStep(currentStep + 1);
-      methods.setValue("step" as any, currentStep + 1); // Update step in form values if needed
+      methods.setValue("step" as any, currentStep + 1); 
     }
   };
 
@@ -98,10 +113,9 @@ export default function RoiStudyPage() {
   const onSubmit: SubmitHandler<WizardFormValues> = async (data) => {
     if (currentStep === stepsConfig.length - 1) { // Final step (Summary)
       setIsLoading(true);
-      // Simulate API call for ROI calculation
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      const values = getValues(); // Get all form values
+      const values = getValues(); 
       const totalInvestment = (values.hardwareCost || 0) + (values.softwareCost || 0) + (values.trainingCost || 0) + (values.otherCosts || 0);
       const totalAnnualBenefit = (values.efficiencyGains || 0) + (values.errorReduction || 0) + (values.newRevenue || 0) + (values.otherBenefits || 0);
 
@@ -114,7 +128,6 @@ export default function RoiStudyPage() {
         setIsLoading(false);
         return;
       }
-
 
       const roi = totalInvestment > 0 ? ((totalAnnualBenefit - totalInvestment) / totalInvestment) * 100 : (totalAnnualBenefit > 0 ? Infinity : 0);
       const paybackPeriod = totalAnnualBenefit > 0 ? totalInvestment / totalAnnualBenefit : Infinity;
@@ -149,6 +162,30 @@ export default function RoiStudyPage() {
                   <FormControl>
                     <Input placeholder="E.g., AR Maintenance Assistant" {...field} />
                   </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={methods.control}
+              name="useCase"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Project Use Case</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a use case" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {useCaseEnum.options.map((option) => (
+                        <SelectItem key={option} value={option}>
+                          {option}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}
@@ -254,6 +291,7 @@ export default function RoiStudyPage() {
         return (
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Project: {values.projectName || "N/A"}</h3>
+            <p className="text-sm text-muted-foreground">Use Case: {values.useCase || "N/A"}</p>
             {values.projectDescription && <p className="text-muted-foreground">{values.projectDescription}</p>}
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
@@ -276,13 +314,16 @@ export default function RoiStudyPage() {
   };
 
   if (isComplete && roiResult) {
+    const allValues = getValues();
     return (
       <div className="flex flex-col items-center justify-center py-12">
         <Card className="w-full max-w-2xl shadow-xl">
           <CardHeader className="items-center text-center">
             <CheckCircle className="h-16 w-16 text-green-500 mb-4" />
             <CardTitle className="text-3xl">ROI Calculation Complete!</CardTitle>
-            <CardDescription>Project: {getValues().projectName || "N/A"}</CardDescription>
+            <CardDescription>
+              Project: {allValues.projectName || "N/A"} | Use Case: {allValues.useCase || "N/A"}
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6 text-center">
             <div>
@@ -315,7 +356,6 @@ export default function RoiStudyPage() {
     );
   }
 
-
   return (
     <div className="space-y-8">
       <header className="mb-8">
@@ -325,7 +365,32 @@ export default function RoiStudyPage() {
         </p>
       </header>
       
-      <Stepper steps={stepsConfig} currentStep={currentStep} onStepClick={setCurrentStep} className="mb-12" />
+      <Stepper steps={stepsConfig} currentStep={currentStep} onStepClick={(step) => {
+          if (step < currentStep) { // Allow navigating to already visited & valid steps
+             setCurrentStep(step);
+             methods.setValue("step" as any, step);
+          } else if (step > currentStep) {
+            // To navigate forward, ensure current and intermediate steps are valid
+            const validateAndProceed = async () => {
+              for (let i = currentStep; i < step; i++) {
+                const isStepValid = await trigger(
+                  i === 0 ? ["projectName", "useCase"] : 
+                  i === 1 ? ["hardwareCost", "softwareCost", "trainingCost", "otherCosts"] :
+                  i === 2 ? ["efficiencyGains", "errorReduction", "newRevenue", "otherBenefits"] : 
+                  []
+                );
+                if (!isStepValid) {
+                  setCurrentStep(i); // Stay on the invalid step
+                  methods.setValue("step" as any, i);
+                  return;
+                }
+              }
+              setCurrentStep(step);
+              methods.setValue("step" as any, step);
+            }
+            validateAndProceed();
+          }
+      }} className="mb-12" />
 
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -353,3 +418,6 @@ export default function RoiStudyPage() {
     </div>
   );
 }
+
+
+    
