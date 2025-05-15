@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BarChart3, FileText, Search, Zap, Target, Lightbulb, Users, Presentation, ActivitySquare, GraduationCap, HeartHandshake, DollarSign, Workflow, Cpu } from "lucide-react";
+import { ArrowRight, BarChart3, FileText, Search, Zap, ActivitySquare, GraduationCap, HeartHandshake, DollarSign } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -57,7 +57,7 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Unlock Insightful AR/MR Feasibility Analysis
             </h2>
-            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[900px] text-muted-foreground md:text-lg/relaxed xl:text-xl/relaxed">
               Our platform offers powerful tools to guide your healthcare technology investments with clarity and confidence.
             </p>
           </div>
@@ -94,7 +94,7 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               From Data to Decision, Effortlessly
             </h2>
-            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[900px] text-muted-foreground md:text-lg/relaxed xl:text-xl/relaxed">
               Discover how our intuitive platform simplifies complex AR/MR feasibility studies for healthcare.
             </p>
           </div>
@@ -185,7 +185,7 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Why AR/MR is a Game-Changer for Healthcare
             </h2>
-            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[900px] text-muted-foreground md:text-lg/relaxed xl:text-xl/relaxed">
               Augmented and Mixed Reality technologies are not just futuristic concepts; they are practical tools delivering real-world benefits to healthcare facilities today.
             </p>
           </div>
