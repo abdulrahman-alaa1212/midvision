@@ -11,19 +11,16 @@ import {
   SidebarMenuButton,
   SidebarGroup,
   SidebarGroupLabel,
-  SidebarMenuSub,
-  SidebarMenuSubItem,
-  SidebarMenuSubButton,
 } from "@/components/ui/sidebar"
 
-const mainNavItems = [
+export const mainNavItems = [
   { href: "/", label: "Home", icon: Home },
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/roi-study", label: "ROI Study", icon: FileText },
   { href: "/ai-search", label: "AI Search", icon: SearchIcon },
 ]
 
-const additionalNavItems = [
+export const additionalNavItems = [
   { href: "/analytics", label: "Analytics", icon: BarChart3 },
   { href: "/settings", label: "Settings", icon: Settings },
 ]
